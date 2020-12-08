@@ -22,24 +22,23 @@ const contactReducer = (state, action) => {
 					(contact) => contact.id !== action.payload
 				),
 			};
-		// case SET_CURRENT:
-		// 	return {
-		// 		...state,
-		// 		users: [],
-		// 		loading: false,
-		// 	};
-		// case CLEAR_CURRENT:
-		// 	return {
-		// 		...state,
-		// 		user: action.payload,
-		// 		loading: false,
-		// 	};
-		// case UPDATE_CONTACT:
-		// 	return {
-		// 		...state,
-		// 		repos: action.payload,
-		// 		loading: false,
-		// 	};
+		case SET_CURRENT:
+			return {
+				...state,
+				current: action.payload,
+			};
+		case CLEAR_CURRENT:
+			return {
+				...state,
+				current: null,
+			};
+		case UPDATE_CONTACT:
+			return {
+				...state,
+				contacts: state.contacts.map((contact) =>
+					contact.id === action.payload.id ? action.payload : contact
+				),
+			};
 		// case FILTER_CONTACTS:
 		// 	return {
 		// 		...state,

@@ -15,12 +15,13 @@ const contactReducer = (state, action) => {
 				...state,
 				contacts: [...state.contacts, action.payload],
 			};
-		// case DELETE_CONTACT:
-		// 	return {
-		// 		...state,
-		// 		users: action.payload,
-		// 		loading: false,
-		// 	};
+		case DELETE_CONTACT:
+			return {
+				...state,
+				contacts: state.contacts.filter(
+					(contact) => contact.id !== action.payload
+				),
+			};
 		// case SET_CURRENT:
 		// 	return {
 		// 		...state,
@@ -49,8 +50,8 @@ const contactReducer = (state, action) => {
 		// 		...state,
 		// 		loading: true,
 		// 	};
-		// default:
-		// 	return state;
+		default:
+			return state;
 	}
 };
 

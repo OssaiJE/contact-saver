@@ -39,16 +39,20 @@ const contactReducer = (state, action) => {
 					contact.id === action.payload.id ? action.payload : contact
 				),
 			};
-		// case FILTER_CONTACTS:
-		// 	return {
-		// 		...state,
-		// 		loading: true,
-		// 	};
-		// case CLEAR_FILTER:
-		// 	return {
-		// 		...state,
-		// 		loading: true,
-		// 	};
+		case FILTER_CONTACTS:
+			return {
+				...state,
+				filtered: state.contacts.filter((contact) => {
+					// the "gi" parameter means global and insensitive
+					const regex = new RegExp(`${action.payload}`, "gi");
+					return contact.name.match(regex) || contact.email.match(regex);
+				}),
+			};
+		case CLEAR_FILTER:
+			return {
+				...state,
+				filtered: null,
+			};
 		default:
 			return state;
 	}

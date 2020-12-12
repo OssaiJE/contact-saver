@@ -23,6 +23,7 @@
 /client/.env.test.local
 /client/.env.production.local
 /client/.eslintcache
+/client/debug.log
 
 /client/npm-debug.log*
 /client/yarn-debug.log*

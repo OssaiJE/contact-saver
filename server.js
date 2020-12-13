@@ -23,10 +23,6 @@ if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
 }
 
-app.get("/", (req, res) => {
-	res.json({ msg: "Welcome to server.js folder!!" });
-});
-
 // Routes
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
